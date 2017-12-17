@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="at.fh_joanneum.newsly.newsly.RessortSettingsActivity">
+
+    <RelativeLayout
+        android:id="@+id/headerSettings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@color/colorPrimaryDark"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/textHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:fontFamily="monospace"
+            android:text="newsly"
+            android:textColor="@color/colorAccent"
+            android:textSize="20sp" />
+
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/yellowLine"
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:layout_below="@id/headerSettings"
+        android:background="@color/colorAccent" />
+
+    <ListView
+        android:id="@+id/ressort_list_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/yellowLine" />
+
+</RelativeLayout>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="top"
+    android:orientation="vertical">
+
+    <View
+        android:layout_marginTop="60dp"
+        android:id="@+id/yellowLine1"
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+
+        android:background="@color/colorAccent" />
+    <Button
+        android:id="@+id/sources"
+        android:textSize="14sp"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="Medien"
+        android:textColor="@color/colorAccent3"
+        android:background="@color/colorPrimaryDark"
+        android:textStyle="normal"
+        android:layout_below="@+id/yellowLine1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <View
+        android:layout_marginTop="30dp"
+        android:id="@+id/yellowLine2"
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:layout_below="@id/sources"
+        android:background="@color/colorAccent" />
+    <Button
+        android:id="@+id/ressorts"
+        android:textSize="14sp"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="Ressorts"
+        android:textColor="@color/colorAccent3"
+        android:background="@color/colorPrimaryDark"
+        android:textStyle="normal"
+        android:layout_below="@id/yellowLine2"
+        />
+
+    <TextView
+        android:id="@+id/copyrightText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Copyright by Edi, Richi und Alex"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="10dp"
+        android:textSize="11dp"
+        android:textStyle="italic"
+        android:gravity="center"/>
+</RelativeLayout>

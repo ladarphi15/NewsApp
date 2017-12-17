@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@color/colorPrimaryDark"
+        android:gravity="center"
+        >
+        <TextView
+            android:id="@+id/textHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:text="newsly"
+            android:fontFamily="monospace"
+            android:textColor="@color/colorAccent"
+            android:textSize="20sp" />
+
+    </RelativeLayout>
+    <View
+        android:id="@+id/yellowLine"
+        android:layout_below="@id/header"
+        android:layout_height="2dp"
+        android:background="@color/colorAccent"
+        android:layout_width="fill_parent"/>
+    <WebView
+        android:id="@+id/rssWebView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/yellowLine"></WebView>
+</RelativeLayout>
