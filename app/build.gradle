@@ -4,7 +4,7 @@ android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
     defaultConfig {
-        applicationId "at.fh_joanneum.newsly.newsly"
+        applicationId "at.fh_joanneum.news4u.news4u"
         minSdkVersion 15
         targetSdkVersion 25
         versionCode 1

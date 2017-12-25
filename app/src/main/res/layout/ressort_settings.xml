@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="at.fh_joanneum.newsly.newsly.RessortSettingsActivity">
+    tools:context="at.fh_joanneum.newsly.news4u.RessortSettingsActivity">
 
     <RelativeLayout
         android:id="@+id/headerSettings"
@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:fontFamily="monospace"
-            android:text="newsly"
+            android:text="@string/app_name"
             android:textColor="@color/colorAccent"
             android:textSize="20sp" />
 

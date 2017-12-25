@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="at.fh_joanneum.newsly.newsly">
+    package="at.fh_joanneum.newsly.news4u">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -17,7 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".StartScreenActivity"
+            android:name="at.fh_joanneum.newsly.news4u.StartScreenActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -26,14 +26,24 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".NewsWebViewActivity"
+            android:name="at.fh_joanneum.newsly.news4u.NewsWebViewActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".RessortSettingsActivity"
+            android:name="at.fh_joanneum.newsly.news4u.RessortSettingsActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".SourcesSettingsActivity"
+            android:name="at.fh_joanneum.newsly.news4u.SourcesSettingsActivity"
             android:theme="@style/AppTheme.NoActionBar" />
+
+        <receiver android:name="at.fh_joanneum.newsly.news4u.WidgetProvider">
+
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider"
+                android:resource="@xml/widget_info"
+                />
+        </receiver>
     </application>
 
 </manifest>
