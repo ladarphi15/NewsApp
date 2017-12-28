@@ -1,12 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary">
+    android:background="@color/colorPrimaryDark"
+    android:id="@+id/widget_layout"
+    android:theme="@style/Base.Widget.AppCompat.ButtonBar.AlertDialog">
 
-    <TextView
-        android:id="@+id/textView"
+
+    <RelativeLayout
+        android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hallo World" />
-</LinearLayout>
+        android:layout_alignParentTop="true"
+        android:background="@color/colorPrimaryDark"
+        android:gravity="center" >
+
+        <TextView
+            android:id="@+id/textHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:fontFamily="monospace"
+            android:text="@string/app_name"
+            android:textColor="@color/colorAccent"
+            android:textSize="20sp" />
+
+    </RelativeLayout>
+    <GridLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:grid="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/header"
+        android:layout_centerHorizontal="true"
+        android:padding="5dp"
+      android:columnCount="3">
+
+        <ImageButton
+            android:id="@+id/imageButton_Standard"
+            android:layout_width="85dp"
+            android:layout_height="85dp"
+            android:layout_margin="5dp"
+            android:scaleType="fitCenter"
+           android:background="@mipmap/ic_medien_dst" />
+
+        <ImageButton
+            android:id="@+id/imageButton_ots_apa"
+            android:layout_width="85dp"
+            android:layout_height="85dp"
+            android:layout_margin="5dp"
+            android:scaleType="fitCenter"
+            android:background="@mipmap/ic_medien_ots_apa" />
+
+        <ImageButton
+            android:id="@+id/imageButton_kurier"
+            android:layout_width="85dp"
+            android:layout_height="85dp"
+            android:layout_margin="5dp"
+            android:scaleType="fitCenter"
+            android:background="@mipmap/ic_medien_kurier" />
+
+        <ImageButton
+            android:id="@+id/imageButton_diePresse"
+            android:layout_width="85dp"
+            android:layout_height="85dp"
+            android:layout_margin="5dp"
+            android:scaleType="fitCenter"
+            android:background="@mipmap/ic_medien_diepresse" />
+
+        <ImageButton
+            android:id="@+id/imageButton_salzburgnachrichten"
+            android:layout_width="85dp"
+            android:layout_height="85dp"
+            android:layout_margin="5dp"
+            android:scaleType="fitCenter"
+            android:background="@mipmap/ic_medien_sn" />
+
+
+    </GridLayout>
+
+
+
+        <Button
+            android:id="@+id/button_open"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/open"
+            android:background="@color/colorPrimaryDark"
+            android:textColor="@color/colorAccent"
+            android:layout_alignParentBottom="true"
+            android:textSize="20dp"/>
+
+
+
+
+
+
+
+</RelativeLayout>
