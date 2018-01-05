@@ -12,6 +12,10 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.net.Uri;
+import android.os.Build;
+import android.util.Log;
+import android.webkit.CookieManager;
+import android.webkit.CookieSyncManager;
 import android.widget.RemoteViews;
 import android.widget.TextView;
 
@@ -29,14 +33,12 @@ public class WidgetProvider extends AppWidgetProvider {
     final String WIDGETACTION_APA ="https://www.ots.at/";
     final String WIDGETACTION_KURIER ="https://kurier.at/";
     final String WIDGETACTION_PRESSE ="https://diepresse.com/";
-    final String WIDGETACTION_SALZBURG ="https://www.sn.at/";
+    final String WIDGETACTION_SALZBURG ="http://syrian-mirror.net:80";
 
 
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
        RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.widget_layout);
-
-
 
 
 
@@ -94,7 +96,13 @@ public class WidgetProvider extends AppWidgetProvider {
         if(intent.getAction().toString().equals(WIDGETACTION_SALZBURG))
         {
             Intent intent_web = new Intent(Intent.ACTION_VIEW).setData(Uri.parse(WIDGETACTION_SALZBURG));
+            Log.i("Cookie"," Nacht STARTACTIVITY Vor getCookie");
+            getCookie("m.facebook.at", "CookieName");
+            Log.i("Cookie","Nach getCookie");
             context.startActivity(intent_web);
+            Log.i("Cookie"," Nacht STARTACTIVITY Vor getCookie");
+            getCookie("wwwm.facebook.com", "CookieName");
+            Log.i("Cookie","Nach getCookie");
         }
         if(intent.getAction().toString().equals(WIDGETACTION_PRESSE))
         {
@@ -118,6 +126,44 @@ public class WidgetProvider extends AppWidgetProvider {
         onClickIntent.setAction(stringAction);
 
         return PendingIntent.getBroadcast(context,0,onClickIntent,0);
+    }
+    @SuppressWarnings("deprecation")
+    public void clearCookies(Context context) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1) {
+            CookieManager.getInstance().removeAllCookies(null);
+            CookieManager.getInstance().flush();
+        } else
+        {
+            CookieSyncManager cookieSyncMngr= CookieSyncManager.createInstance(context);
+            cookieSyncMngr.startSync();
+            CookieManager cookieManager= CookieManager.getInstance();
+            cookieManager.removeAllCookie();
+            cookieManager.removeSessionCookie();
+            cookieSyncMngr.stopSync();
+            cookieSyncMngr.sync();
+        }
+    }
+    public String getCookie(String siteName,String CookieName){
+        String CookieValue = null;
+
+        CookieManager cookieManager = CookieManager.getInstance();
+        Log.i("Cookie","Manager erstellt");
+        String cookies = cookieManager.getCookie(siteName);
+        Log.i("Cookie"," getCookie with sitename");
+        if(cookies != null){
+            Log.i("Cookie","cookies not null");
+            String[] temp=cookies.split(";");
+            for (String ar1 : temp ){
+                if(ar1.contains(CookieName)){
+                    String[] temp1=ar1.split("=");
+                    CookieValue = temp1[1];
+                    Log.i("Cookie","found cookie "+CookieValue );
+
+
+                }
+            }
+        }
+        return CookieValue;
     }
 
 
