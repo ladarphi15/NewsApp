@@ -1,6 +1,8 @@
 package at.fh_joanneum.newsly.news4u;
 
+import android.app.KeyguardManager;
 import android.os.Bundle;
+import android.os.PowerManager;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
 
@@ -9,11 +11,14 @@ import at.fh_joanneum.newsly.news4u.db.entity.RessortSetting;
 
 public class RessortSettingsActivity extends AppCompatActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ressort_settings);
         ViewHelper.formatAppHeader(this);
+
+
 
         RessortSettingsRepository ressortSettingsRepository = new RessortSettingsRepository(this);
 

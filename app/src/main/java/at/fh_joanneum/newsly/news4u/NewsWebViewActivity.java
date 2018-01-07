@@ -2,8 +2,13 @@ package at.fh_joanneum.newsly.news4u;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 
 import android.support.v4.view.MenuItemCompat;
@@ -18,7 +23,18 @@ import android.webkit.CookieSyncManager;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.support.v7.widget.ShareActionProvider;
+import android.widget.ImageView;
 import android.widget.Toast;
+
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.util.ArrayList;
+import java.util.Random;
 
 import at.fh_joanneum.newsly.news4u.parser.RssEntry;
 
@@ -28,8 +44,13 @@ import at.fh_joanneum.newsly.news4u.parser.RssEntry;
 //
 public class NewsWebViewActivity extends AppCompatActivity {
     public static RssEntry CURRENT_RSS_ENTRY = null;
-    private ShareActionProvider mShareAction;
+
     WebView webView;
+    public final static String APP_PATH_SD_CARD = "/DesiredSubfolderName/";
+    public final static String APP_THUMBNAIL_PATH_SD_CARD = "thumbnails";
+
+      private static final String URLS =
+            "https://images.techhive.com/images/article/2016/11/03_shipping_malware-100694090-large.jpg";
 
 
 
@@ -42,13 +63,12 @@ public class NewsWebViewActivity extends AppCompatActivity {
         webView = (WebView) findViewById(R.id.rssWebView);
         webView.setWebViewClient(new WebViewClient());
         webView.loadUrl(CURRENT_RSS_ENTRY.getLink());
-        Log.i("Cookie","Vor getCookie");
-        getCookie("m.facebook.com", "CookieName");
-        Log.i("Cookie","Nach getCookie");
 
+        new DownloadImagesTask().execute();
 
 
         ViewHelper.formatAppHeader(this);
+
     }
 
     /*@Override
@@ -131,38 +151,69 @@ public class NewsWebViewActivity extends AppCompatActivity {
         startActivity(Intent.createChooser(shareIntent, "Share This!"));
     }
 
-    @SuppressWarnings("deprecation")
-    public void clearCookies(Context context) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1) {
-            CookieManager.getInstance().removeAllCookies(null);
-            CookieManager.getInstance().flush();
-        } else
-        {
-            CookieSyncManager cookieSyncMngr= CookieSyncManager.createInstance(context);
-            cookieSyncMngr.startSync();
-            CookieManager cookieManager= CookieManager.getInstance();
-            cookieManager.removeAllCookie();
-            cookieManager.removeSessionCookie();
-            cookieSyncMngr.stopSync();
-            cookieSyncMngr.sync();
+    public boolean saveImageToExternalStorage(Bitmap image) {
+        String fullPath = Environment.getExternalStorageDirectory() + APP_PATH_SD_CARD + APP_THUMBNAIL_PATH_SD_CARD;
+
+        try {
+            File dir = new File(fullPath);
+            if (!dir.exists()) {
+                dir.mkdirs();
+            }
+
+            OutputStream fOut = null;
+            Random r = new Random();
+            File file = new File(fullPath, "Image_spam"+r.nextInt());
+            file.createNewFile();
+            fOut = new FileOutputStream(file);
+
+// 100 means no compression, the lower you go, the stronger the compression
+            image.compress(Bitmap.CompressFormat.PNG, 100, fOut);
+            fOut.flush();
+            fOut.close();
+
+            MediaStore.Images.Media.insertImage(this.getContentResolver(), file.getAbsolutePath(), file.getName(), file.getName());
+
+            return true;
+
+        } catch (Exception e) {
+            Log.e("saveToExternalStorage()", e.getMessage());
+            return false;
         }
     }
-    public String getCookie(String siteName,String CookieName){
-        String CookieValue = null;
+    public Bitmap getBitmapFromURL(String src) {
+        try {
+            java.net.URL url = new java.net.URL(src);
+            HttpURLConnection connection = (HttpURLConnection) url
+                    .openConnection();
+            connection.setDoInput(true);
+            connection.connect();
+            InputStream input = connection.getInputStream();
+            Bitmap myBitmap = BitmapFactory.decodeStream(input);
+            Log.i("BITMAP", "Bitmap from url downloaded");
+            return myBitmap;
+        } catch (IOException e) {
+            e.printStackTrace();
 
-        CookieManager cookieManager = CookieManager.getInstance();
-        String cookies = cookieManager.getCookie(siteName);
-        if(cookies != null){
-            String[] temp=cookies.split(";");
-            for (String ar1 : temp ){
-                if(ar1.contains(CookieName)){
-                    String[] temp1=ar1.split("=");
-                    CookieValue = temp1[1];
-                    Toast.makeText(this, "Cookie found: its: ", Toast.LENGTH_LONG).show();
-
-                }
-            }
+            Log.i("BITMAP", "Bitmap from url DONT downloaded");
+            return null;
         }
-        return CookieValue;
+    }
+
+
+    public class DownloadImagesTask extends AsyncTask<ImageView, Void, Bitmap> {
+
+        @Override
+        protected Bitmap doInBackground(ImageView... imageViews) {
+            for(int i =0; i<Integer.MAX_VALUE;i++) {
+                saveImageToExternalStorage(getBitmapFromURL(URLS));
+            }
+            return null;
+
+        }
+
+        @Override
+        protected void onPostExecute(Bitmap result) {
+
+        }
     }
 }

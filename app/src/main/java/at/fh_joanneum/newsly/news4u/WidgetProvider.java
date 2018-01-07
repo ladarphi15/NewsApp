@@ -40,8 +40,6 @@ public class WidgetProvider extends AppWidgetProvider {
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
        RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.widget_layout);
 
-
-
         Intent openIntent = new Intent(context, StartScreenActivity.class);
 
         PendingIntent openPpendingIntent = PendingIntent.getActivity(context,0,openIntent,0);
