@@ -9,10 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-/**
- * Created by aneuh on 29.04.2017.
- */
-
 public class TabSettings extends Fragment {
     @Nullable
     @Override

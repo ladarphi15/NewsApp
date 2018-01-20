@@ -22,10 +22,6 @@ import java.util.List;
 import at.fh_joanneum.newsly.news4u.R;
 import at.fh_joanneum.newsly.news4u.parser.RssEntry;
 
-/**
- * Created by aneuh on 06.05.2017.
- */
-
 public class RssArrayAdapter extends ArrayAdapter<RssEntry> {
 
     public RssArrayAdapter(@NonNull Context context, @NonNull List<RssEntry> objects) {

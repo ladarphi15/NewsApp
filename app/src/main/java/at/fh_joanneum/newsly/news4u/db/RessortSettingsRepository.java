@@ -12,10 +12,6 @@ import java.util.List;
 import at.fh_joanneum.newsly.news4u.db.entity.RessortSetting;
 import at.fh_joanneum.newsly.news4u.ressorts.RessortCategory;
 
-/**
- * Created by edi on 06/05/2017.
- */
-
 public class RessortSettingsRepository
         implements SettingsRepository<RessortSetting> {
     private SettingsDBHelper settingsHelper;

@@ -3,10 +3,6 @@ package at.fh_joanneum.newsly.news4u.ressorts;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by edi on 07/05/2017.
- */
-
 public enum RessortCategory {
     SPORT("Sport"),
     POLITICS("Politik"),

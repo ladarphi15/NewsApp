@@ -8,10 +8,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 import at.fh_joanneum.newsly.news4u.db.entity.Source;
 import at.fh_joanneum.newsly.news4u.ressorts.RessortCategory;
 
-/**
- * Created by edi on 06/05/2017.
- */
-
 public class SettingsDBHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "SETTINGS.db";
     private static final int DATABASE_VERSION = 8;

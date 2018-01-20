@@ -2,10 +2,6 @@ package at.fh_joanneum.newsly.news4u;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-/**
- * Created by aneuh on 29.04.2017.
- */
-
 public class PagerAdapter extends FragmentStatePagerAdapter {
     private int tabs;
 

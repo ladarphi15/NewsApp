@@ -14,10 +14,6 @@ import at.fh_joanneum.newsly.news4u.db.entity.RessortSetting;
 import at.fh_joanneum.newsly.news4u.db.entity.Source;
 import at.fh_joanneum.newsly.news4u.db.entity.SourceSetting;
 
-/**
- * Created by edi on 07/05/2017.
- */
-
 class RessortService {
     private final SourceSettingsRepository sourceSettingsRepository;
     private final RessortSettingsRepository ressortSettingsRepository;

@@ -10,10 +10,6 @@ import java.util.List;
 
 import at.fh_joanneum.newsly.news4u.db.entity.Source;
 
-/**
- * Created by edi on 07/05/2017.
- */
-
 public class SourceRepository {
     private SettingsDBHelper settingsHelper;
 

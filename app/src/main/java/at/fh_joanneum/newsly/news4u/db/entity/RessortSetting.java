@@ -2,10 +2,6 @@ package at.fh_joanneum.newsly.news4u.db.entity;
 
 import at.fh_joanneum.newsly.news4u.ressorts.RessortCategory;
 
-/**
- * Created by edi on 06/05/2017.
- */
-
 public class RessortSetting implements Setting {
     private long id;
     private RessortCategory category;

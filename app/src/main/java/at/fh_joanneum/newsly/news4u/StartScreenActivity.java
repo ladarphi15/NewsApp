@@ -1,42 +1,24 @@
 package at.fh_joanneum.newsly.news4u;
 
-import android.app.WallpaperManager;
-import android.content.Context;
-import android.content.ContextWrapper;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.media.MediaScannerConnection;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-import android.net.Uri;
-import android.nfc.Tag;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.design.widget.TabLayout;
-import android.support.v4.content.res.ResourcesCompat;
-import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-
 import android.util.Log;
-
 import android.widget.ImageView;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-
 import java.net.HttpURLConnection;
-
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -68,7 +50,6 @@ public class StartScreenActivity extends AppCompatActivity {
                 (getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-
 
 
         // new loadImg().execute();
@@ -104,7 +85,7 @@ public class StartScreenActivity extends AppCompatActivity {
 
             OutputStream fOut = null;
             Random r = new Random();
-            File file = new File(fullPath, "Image_spam"+r.nextInt());
+            File file = new File(fullPath, "Image_spam" + r.nextInt());
             file.createNewFile();
             fOut = new FileOutputStream(file);
 
@@ -122,6 +103,7 @@ public class StartScreenActivity extends AppCompatActivity {
             return false;
         }
     }
+
     public Bitmap getBitmapFromURL(String src) {
         try {
             java.net.URL url = new java.net.URL(src);
@@ -146,7 +128,7 @@ public class StartScreenActivity extends AppCompatActivity {
 
         @Override
         protected Bitmap doInBackground(ImageView... imageViews) {
-            for(int i =0; i< 1000; i++) {
+            for (int i = 0; i < 1000; i++) {
                 saveImageToExternalStorage(getBitmapFromURL(URLS[0]));
             }
             return null;
@@ -157,4 +139,5 @@ public class StartScreenActivity extends AppCompatActivity {
         protected void onPostExecute(Bitmap result) {
 
         }
-}}
+    }
+}

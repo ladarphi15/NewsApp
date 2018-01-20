@@ -16,10 +16,6 @@ import java.util.List;
 
 import at.fh_joanneum.newsly.news4u.db.entity.LinkSourceRessort;
 
-/**
- * Created by aneuh on 29.04.2017.
- */
-
 public class DownloadRssTask extends AsyncTask<List<LinkSourceRessort>, Void, List<RssEntry>> {
 
     public interface AsyncResponse {
@@ -87,7 +83,7 @@ public class DownloadRssTask extends AsyncTask<List<LinkSourceRessort>, Void, Li
         return allEntries;
     }
 
-    private InputStream downloadUrl(String urlString) throws IOException {
+    InputStream downloadUrl(String urlString) throws IOException {
         URL url = new URL(urlString);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setReadTimeout(10000 /* milliseconds */);

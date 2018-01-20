@@ -23,10 +23,6 @@ import at.fh_joanneum.newsly.news4u.parser.DownloadRssTask;
 import at.fh_joanneum.newsly.news4u.parser.RssEntry;
 import at.fh_joanneum.newsly.news4u.sensor.ShakeDetector;
 
-/**
- * Created by aneuh on 29.04.2017.
- */
-
 public class TabNews extends ListFragment implements DownloadRssTask.AsyncResponse {
 
     private RssArrayAdapter adapter;

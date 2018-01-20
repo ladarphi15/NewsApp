@@ -16,10 +16,6 @@ import java.util.Locale;
 
 import at.fh_joanneum.newsly.news4u.db.entity.LinkSourceRessort;
 
-/**
- * Created by aneuh on 29.04.2017.
- */
-
 public class RssParser {
     private static final String ns = null;
 

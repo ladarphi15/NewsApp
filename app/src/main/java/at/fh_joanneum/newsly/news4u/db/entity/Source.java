@@ -1,9 +1,5 @@
 package at.fh_joanneum.newsly.news4u.db.entity;
 
-/**
- * Created by edi on 07/05/2017.
- */
-
 public class Source {
     private long id;
     private String name;

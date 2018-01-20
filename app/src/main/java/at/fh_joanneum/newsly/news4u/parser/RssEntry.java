@@ -3,10 +3,6 @@ package at.fh_joanneum.newsly.news4u.parser;
 import java.text.DateFormat;
 import java.util.Date;
 
-/**
- * Created by aneuh on 29.04.2017.
- */
-
 public class RssEntry {
     private String title;
     private String author;

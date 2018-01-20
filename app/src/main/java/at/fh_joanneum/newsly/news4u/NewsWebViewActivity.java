@@ -38,10 +38,6 @@ import java.util.Random;
 
 import at.fh_joanneum.newsly.news4u.parser.RssEntry;
 
-/**
- * Created by aneuh on 06.05.2017.
- */
-//
 public class NewsWebViewActivity extends AppCompatActivity {
     public static RssEntry CURRENT_RSS_ENTRY = null;
 
